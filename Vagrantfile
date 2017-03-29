@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Synced Folder
-  config.vm.synced_folder "/path/to/directory", "/var/www/html",
+  config.vm.synced_folder "/Users/takeuchikenta/localdev", "/var/www/html",
     :owner => "nginx",
     :group => "nginx",
     :mount_options => ["dmode=775,fmode=664"]
@@ -25,8 +25,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.limit = 'all'
   end
 
+  # Port
+  #config.vm.network "forwarded_port", guest: 80, host: 8080
+
   # Network - Host Updator
-  config.vm.network :private_network, ip: "192.168.33.10"
+  config.vm.network :private_network, ip: "192.168.33.111"
   config.vm.hostname = "localdev"
-  config.hostsupdater.aliases = ["localdev"]
+  config.hostsupdater.aliases = ["localdev-alias"]
 end
