@@ -33,15 +33,6 @@
 - name: Set php-fpm setting
   copy: src=../templates/www.conf dest=/etc/php-fpm.d/www.conf
 
-  # lineinfile: "dest=/etc/php-fpm.d/www.conf
-  #         state=present
-  #         regexp='^user = apache'
-  #         line='user = nginx'"
-  # lineinfile: "dest=/etc/php-fpm.d/www.conf
-  #         state=present
-  #         regexp='^group = apache'
-  #         line='group = nginx'"
-
 - name: Run php-fpm
   shell: |
    systemctl start php-fpm
