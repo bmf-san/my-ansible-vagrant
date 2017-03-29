@@ -1,0 +1,4 @@
+---
+- include: install_epel_release.yml
+- include: add_remi_repo.yml
+- include: install_common.yml

@@ -1,5 +1,5 @@
 # My Ansible Vagrant
-An ansible provisioning setting for Vagrant box(CentOS7.2).
+An ansible provisioning setting for Vagrant box(CentOS7.3).
 
 # Ingredients
 + [common]()

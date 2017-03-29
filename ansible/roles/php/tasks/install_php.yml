@@ -1,0 +1,13 @@
+---
+- name: Install php-fpm-70
+  yum: name={{ item }} state=latest enablerepo=remi,remi-php70
+  with_items:
+   - php
+   - php-devel
+   - php-fpm
+   - php-mbstring
+   - php-pdo
+   - php-mcrypt
+   - php-mysqlnd
+   - php-opcache
+   - php-xml
