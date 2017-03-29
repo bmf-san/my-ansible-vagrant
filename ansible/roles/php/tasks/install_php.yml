@@ -12,29 +12,35 @@
    - php-opcache
    - php-xml
 
-- name: Set php setting
+- name: Set php.ini timezone
   lineinfile: >-
    dest='/etc/php.ini'
    regexp=';date.timezone ='
    line='date.timezone = Asia/Tokyo'
+
+- name: Set php.ini session max life time
   lineinfile: >-
    dest='/etc/php.ini'
    regexp='session.gc_maxlifetime ='
    line='session.gc_maxlifetime = 1800'
+
+- name: Set php.ini memory limit
   lineinfile: >-
    dest='/etc/php.ini'
    regexp='memory_limit ='
    line='memory_limit = 256M'
 
 - name: Set php-fpm setting
-  lineinfile: "dest=/etc/php-fpm.d/www.conf
-          state=present
-          regexp='^user = apache'
-          line='user = nginx'"
-  lineinfile: "dest=/etc/php-fpm.d/www.conf
-          state=present
-          regexp='^group = apache'
-          line='group = nginx'"
+  copy: src=../templates/www.conf dest=/etc/php-fpm.d/www.conf
+
+  # lineinfile: "dest=/etc/php-fpm.d/www.conf
+  #         state=present
+  #         regexp='^user = apache'
+  #         line='user = nginx'"
+  # lineinfile: "dest=/etc/php-fpm.d/www.conf
+  #         state=present
+  #         regexp='^group = apache'
+  #         line='group = nginx'"
 
 - name: Run php-fpm
   shell: |
