@@ -42,3 +42,9 @@
   shell: |
    chown nginx /var/lib/php/session
    chgrp nginx /var/lib/php/session
+
+- name: Restart php-fpm
+  shell: systemctl restart php-fpm
+
+- name: Restart nginx
+  shell: systemctl restart nginx

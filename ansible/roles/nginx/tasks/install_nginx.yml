@@ -8,6 +8,8 @@
 - name: Copy nginx default configuration
   template: src={{item.src}} dest={{item.dest}}
   with_items:
+   - { src: '../templates/laravel-react-redux-blog-boilerplate.conf', dest: '/etc/nginx/conf.d' }
+   - { src: '../templates/wp-bmf-tech.conf', dest: '/etc/nginx/conf.d' }
    - { src: '../templates/localdev.conf', dest: '/etc/nginx/conf.d' }
 
 - name: Restart nginx
